@@ -1,0 +1,57 @@
+.background-HP1 {
+    position: relative;
+    background-color: black;
+    height: 800px;
+    background-image: url("https://i.pinimg.com/564x/5d/93/20/5d93206d0bf7e84261f6f497aff45b3c.jpg");
+    background-size: cover;
+  }
+  
+  .background-HP1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black filter with 50% opacity */
+    transition: background 0.3s ease; /* Smooth transition effect */
+    z-index: 1;
+  }
+  
+  .background-HP1:hover::before {
+    background: rgba(0, 0, 0, 0); /* Make the filter transparent on hover */
+  }
+  
+
+  .background-HP2 {
+    position: relative;
+    background-color: black;
+    height: 800px;
+    background-image: url("https://i.pinimg.com/564x/6d/8f/c2/6d8fc2e8b61ee7e03b0bdcc6a881cf0e.jpg");
+    background-size: cover;
+  }
+  
+  .background-HP2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black filter with 50% opacity */
+    transition: background 0.3s ease; /* Smooth transition effect */
+    z-index: 1;
+  }
+  
+  .background-HP2:hover::before {
+    background: rgba(0, 0, 0, 0); /* Make the filter transparent on hover */
+  }
+
+  .content11111 {
+    position: relative;
+    z-index: 2;
+    color: white; /* Ensure text color is visible */
+    margin-top: -200px;
+    margin-left: 80px;
+  }
+  

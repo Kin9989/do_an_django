@@ -1,0 +1,314 @@
+/* @import url(''); */
+
+
+p {
+    /* font-family: '', ; */
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+
+
+blockquote {
+    position: relative;
+    padding-left: 1.5rem;
+    /* font-family: '', ; */
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.05rem;
+}
+
+blockquote:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #a9dfbf;
+    border-radius: 60px;
+}
+
+figure {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.hero:nth-child(1) figure {
+    background-image: url('https://www.bocadolobo.com/en/landing-page/intimate-luxury/images/intimate-luxury-diamond-sideboard-horizontal-boca-do-lobo.jpg');
+}
+
+/* .hero:nth-child(2) figure {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/photo-1506744038136-46273834b3fb.jpg');
+}
+
+.hero:nth-child(3) figure {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/photo-1523712999610-f77fbcfc3843.jpg');
+}
+
+.hero:nth-child(4) figure {
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/photo-1501785888041-af3ef285b470.jpg');
+} */
+
+.hero-inner {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, auto, auto, 0);
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+    /* clip: unset; */
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+}
+
+.hero__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 1rem;
+    width: 100%;
+    height: 100%;
+    color: white;
+    /* font-family: 'Courgette', serif; */
+    font-size: 8vw;
+    letter-spacing: -0.125rem;
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .hero__title {
+        font-size: 6rem;
+    }
+}
+
+.content {
+    position: relative;
+    margin: 0 auto 8rem;
+    padding: 2rem;
+}
+
+.content:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -200px; /* Độ cao của mái nhà */
+    left: 0;
+    width: 100%;
+    height: 200px; /* Đã thay đổi chiều cao để tạo chóp cao hơn */
+    background-color: #ee5522;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23d23d09' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 110 0 100 200 100 200 110'/%3E%3C/g%3E%3C/svg%3E");
+    z-index: 99;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.content__inner {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.content__inner>*+* {
+    margin-top: 1.5rem;
+}
+
+.content__inner>blockquote {
+    margin: 3rem 0;
+}
+
+.content__title {
+    /* font-family: 'Courgette', serif; */
+    font-size: 3rem;
+    line-height: 1.25;
+    letter-spacing: -0.125rem;
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .content__title {
+        font-size: 4rem;
+    }
+}
+
+.content__author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    width: 100%;
+    /* font-family: 'Courgette', serif; */
+    font-size: 1.5rem;
+    letter-spacing: -0.125rem;
+    text-align: center;
+}
+
+.content__author:before,
+.content__author:after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background-color: #a9dfbf;
+}
+
+.content__author:before {
+    margin-right: 1rem;
+}
+
+.content__author:after {
+    margin-left: 1rem;
+}
+
+
+/*  */
+.heading {
+    background: white;
+    height: 5%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 90%;
+}
+
+.swiper-slide {
+    text-align: center;
+    background: #fff;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-general {
+    padding: 75px 0;
+    margin: 0 auto;
+    width: 800px;
+}
+
+.container-general .gallery-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70vh;
+}
+
+.container-general .gallery-wrap .item {
+    flex: 1;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    transition: all 0.8s ease;
+}
+
+.container-general .gallery-wrap .item:hover {
+    flex: 5;
+}
+
+    
+.wrap-effect-3 .item{
+    font-size: 20px;
+}
+.wrap-effect-3 .item:hover {
+    animation: rotate 0.7s ease-in-out both;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.wrap-effect-3 .item:hover  {
+    color: gray;
+    font-size: 40px;
+    font-weight: 700;
+    
+    
+ }
+
+.wrap-effect-3 .item:first-of-type {
+    background-image: url('./img_service_web/thietke.png');
+}
+
+.wrap-effect-3 .item:nth-of-type(2) {
+    background-image: url('./img_service_web/thicong.png');
+}
+
+.wrap-effect-3 .item:nth-of-type(3) {
+    background-image: url('./img_service_web/banle.png');
+}
+
+.wrap-effect-3 .item:nth-of-type(4) {
+    background-image: url('./img_service_web//sanxuat.png');
+}
+
+/* .wrap-effect-3 .item:last-of-type {
+    background-image: url('https://cdn.dribbble.com/users/729829/screenshots/5594777/galshir-winter-cycling_2x.jpg');
+} */
+
+
+
+.inspire {
+    border: 1px solid rgba(22, 76, 167, 0.6);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+}
+
+.inspire:after {
+    background: #38ef7d;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.4;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+}
+
+.inspire:hover:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: rotate(10deg) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: rotate(-10deg) translate3d(0, 0, 0);
+    }
+
+    75% {
+        transform: rotate(5deg) translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+}

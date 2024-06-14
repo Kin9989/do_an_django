@@ -1,0 +1,12 @@
+services:
+  app:
+    # build:
+      # context: .
+      # dockerfile: Dockerfile
+    build: .
+    
+    # env_file:
+    #   - backend/.dev.env
+    command: ["./run.sh"]
+    ports:
+      - 8000:8000
