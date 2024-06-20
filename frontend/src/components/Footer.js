@@ -29,10 +29,10 @@ function Footer() {
 
 
 
-      <MDBFooter className='text-center' color='white' bgColor='black'>
+      <MDBFooter className='' color='white' bgColor='black'>
 
-        <MDBContainer className='p-4'>
-          <section className='mb-4'>
+        <MDBContainer className='p-4 '>
+          <section className='mb-4 text-center'>
             <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
               <MDBIcon fab icon='facebook-f' />
             </MDBBtn>
@@ -58,85 +58,62 @@ function Footer() {
             </MDBBtn>
           </section>
 
-
-
-          <section className='mb-4'>
+          <section className='mb-4 text-center'>
             <p>
               CHÚNG TÔI LÀ MỘT THƯƠNG HIỆU GIA ĐÌNH VỚI KINH NGHIỆM GẦN 30 NĂM TRONG NGHỀ VÀ ĐÃ CÙNG NGƯỜI BÌNH DƯƠNG TẠO NÊN NHỮNG KHÔNG GIAN SỐNG, KHÔNG GIAN LÀM VIỆC CHÂN THỰC VỚI NHU CẦU CỦA MÌNH.
             </p>
           </section>
 
-          {/* <section className=''>
+          <section className=''>
             <MDBRow>
-              <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-                <h5 className='text-uppercase text-white '>Links</h5>
 
-                <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-                  <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Angular
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      React
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Vue
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Laravel
-                    </a>
-                  </p>
-                </MDBCol>
-
-                <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-                  <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Pricing
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Settings
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Orders
-                    </a>
-                  </p>
-                  <p>
-                    <a href='#!' className='text-reset'>
-                      Help
-                    </a>
-                  </p>
-                </MDBCol>
+              <MDBCol lg='6' md='6' className='mb-4 mb-md-0'>
+                <h5 className='text-uppercase text-white'>Liên hệ</h5>
 
                 <ul className='list-unstyled mb-0'>
                   <li>
-                    <a href='#!' className='text-white'>
-                      Link 1
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Showroom : 160/63 Phan Huy Ich  P.15 / Q.Gò Vấp
                     </a>
                   </li>
                   <li>
-                    <a href='#!' className='text-white'>
-                      Link 2
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Kho : 160/63 Phan Huy Ich  P.15 / Q.Gò Vấp
                     </a>
                   </li>
                   <li>
-                    <a href='#!' className='text-white'>
-                      Link 3
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Hotline: 0989 999 999
                     </a>
                   </li>
                   <li>
-                    <a href='#!' className='text-white'>
+                    <a href='mailto:kinranx@gmail.com' className='text-white' style={{ textDecoration: 'none' }}>
+                      Email: kinranx@gmail.com
+                    </a>
+                  </li>
+                </ul>
+              </MDBCol>
+              <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
+                <h5 className='text-uppercase text-white'>Hỗ trợ khách hàng</h5>
+
+                <ul className='list-unstyled mb-0'>
+                  <li>
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Chính sách đổi trả
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Chính sách bảo mật
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Điều khoản dịch vụ
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
                       Link 4
                     </a>
                   </li>
@@ -144,60 +121,24 @@ function Footer() {
               </MDBCol>
 
               <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-                <h5 className='text-uppercase text-white'>Links</h5>
+                <h5 className='text-uppercase text-white'>Sản phẩm</h5>
 
                 <ul className='list-unstyled mb-0'>
                   <li>
-                    <a href='#!' className='text-white'>
-                      Link 1
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Danh sách loại sản phẩm
                     </a>
                   </li>
                   <li>
-                    <a href='#!' className='text-white'>
-                      Link 2
+                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
+                      Tất các sản phẩm
                     </a>
                   </li>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
 
-              <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-                <h5 className='text-uppercase text-white'>Links</h5>
-
-                <ul className='list-unstyled mb-0'>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#!' className='text-white'>
-                      Link 4
-                    </a>
-                  </li>
                 </ul>
               </MDBCol>
             </MDBRow>
-          </section> */}
+          </section>
         </MDBContainer>
         <hr></hr>
         <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>

@@ -33,9 +33,9 @@ const CouponCreateScreen = () => {
 
     return (
         <Container>
-            <Typography variant="h4" component="h1" gutterBottom>
+            {/* <Typography variant="h4" component="h1" gutterBottom>
                 Tạo mã khuyến mãi mới
-            </Typography>
+            </Typography> */}
             <form onSubmit={handleSubmit}>
                 <TextField
                     label="Code"

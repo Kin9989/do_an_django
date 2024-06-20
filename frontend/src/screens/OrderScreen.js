@@ -226,8 +226,8 @@ function OrderScreen({ history, match }) {
 
               {!order.isPaid && order.paymentMethod === "VnPay" && (
                 <ListGroup.Item>
-                  {/* <PaymentForm amount={order.totalPrice} onSuccess={successPaymentHandler} /> */}
 
+                  <PaymentForm orderId={order._id} totalPrice={order.totalPrice} />
                   <a href={`#/pay/${order._id}/paymentform`}   >Thanh toán </a>
                 </ListGroup.Item>
               )}

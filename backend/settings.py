@@ -223,3 +223,11 @@ VNPAY_TMN_CODE = os.environ.get("VNPAY_TMN_CODE", "B5Q0RLS2")
 VNPAY_HASH_SECRET_KEY = os.environ.get(
     "VNPAY_HASH_SECRET_KEY", "8963IHA50Z3R808YQPX65BHM6Q7J5LDR"
 )
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "kinranx@gmail.com"
+EMAIL_HOST_PASSWORD = "jzpe jock vcki hnqz"

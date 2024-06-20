@@ -41,20 +41,12 @@ function PaymentScreen({ history }) {
               checked={paymentMethod === "offline"}
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
-            <Form.Check
-              type="radio"
-              label="PayPal or Credit Card"
-              id="paypal"
-              name="paymentMethod"
-              value="PayPal"
-              checked={paymentMethod === "PayPal"}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check>
+
 
             <Form.Check
               type="radio"
               label="VnPay"
-              id="offline"
+              id="VnPay"
               name="paymentMethod"
               value="VnPay"
               checked={paymentMethod === "VnPay"}

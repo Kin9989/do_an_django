@@ -244,10 +244,30 @@ function Header() {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Hồ sơ</NavDropdown.Item>
                   </LinkContainer>
+                  {userInfo && userInfo.isAdmin && (
+                  <LinkContainer  to="/admin/dashboard">
+                    <NavDropdown.Item>
 
+                    <i className="fas fa-user"></i> Quản lý web
+                    </NavDropdown.Item>
+                  </LinkContainer>
+      )}
                   <NavDropdown.Item onClick={logoutHandler}>
                     Đăng xuất
                   </NavDropdown.Item>
+
+                  {/* <NavDropdown.Item >
+                 
+                <LinkContainer to="/admin/dashboard">
+                  <Nav.Link>
+                   
+                  </Nav.Link>
+                </LinkContainer>
+                
+        
+                  </NavDropdown.Item> */}
+
+                
                 </NavDropdown>
               ) : (
                 <LinkContainer to="/login">
@@ -257,14 +277,7 @@ function Header() {
                 </LinkContainer>
               )}
 
-              {userInfo && userInfo.isAdmin && (
-                <LinkContainer to="/admin/dashboard">
-                  <Nav.Link>
-                    <i className="fas fa-user"></i> Quản trị
-                  </Nav.Link>
-                </LinkContainer>
-                
-              )}
+             
             
               
 
@@ -298,19 +311,42 @@ function Header() {
                   </IconButton>
                 </Box>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem onClick={() => scrollToSection('features')}>
-                  Features
+                
+         
+
+              
+
+                <MenuItem onClick={() => scrollToSection('features')}  href="#/contact">
+                LIÊN HỆ
                 </MenuItem>
-                <MenuItem onClick={() => scrollToSection('testimonials')}>
-                  Testimonials
+                <MenuItem onClick={() => scrollToSection('testimonials')}     href="#/blogs">
+                BÀI VIẾT
                 </MenuItem>
-                <MenuItem onClick={() => scrollToSection('highlights')}>
-                  Highlights
+                <MenuItem onClick={() => scrollToSection('highlights')}  href="#/products">
+                SẢN PHẨM
                 </MenuItem>
                 <MenuItem onClick={() => scrollToSection('pricing')}>
-                  Pricing
+               
+                    <LinkContainer to="">
+                      <NavDropdown title={<span style={{ color: '#0288d1' }}>DANH MỤC</span>} id="basic-nav-dropdown">
+                        {loading ? (
+                          <NavDropdown.Item>Loading...</NavDropdown.Item>
+                        ) : error ? (
+                          <NavDropdown.Item>Error! Không thể tải danh mục.</NavDropdown.Item>
+                        ) : (
+                          categories.map((category) => (
+                            <NavDropdown.Item key={category.id} onClick={() => handleCategorySelect(category.id)} style={{ color: 'blue' }}>
+                              {category.name}
+                            </NavDropdown.Item>
+                          ))
+                        )}
+                      </NavDropdown>
+                    </LinkContainer>
+              
+
+              
                 </MenuItem>
-                <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
+                
                 <MenuItem fullWidth>
                 {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">

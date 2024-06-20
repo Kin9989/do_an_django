@@ -95,6 +95,7 @@ const BlogEditScreen = () => {
                             margin="normal"
                         />
                         <ReactQuill
+
                             value={content}
                             onChange={handleContentChange}
                             modules={BlogEditScreen.modules}

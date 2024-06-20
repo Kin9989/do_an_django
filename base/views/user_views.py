@@ -24,6 +24,8 @@ from django.utils.encoding import force_bytes, force_text
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 
+from django.views.decorators.csrf import csrf_exempt
+
 
 # JWT Views
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -97,7 +99,7 @@ def reset_password_request_token(request):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-    reset_link = f"{request.scheme}://{request.get_host()}/api/users/reset-password-confirm/{uid}/{token}/"
+    reset_link = f"http://localhost:3000/#/reset-password-confirm/{uid}/{token}/"
     send_mail(
         "Password Reset Request",
         f"Please use the following link to reset your password: {reset_link}",
@@ -265,3 +267,59 @@ def updateBlogById(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])  # Ensuring the user is authenticated
+def add_to_favorites(request, post_id):
+    try:
+        blog = Post.objects.get(id=post_id)
+        user = request.user
+        if FavoritePost.objects.filter(user=user, post=blog).exists():
+            return Response(
+                {"message": "Blog already favorited"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        FavoritePost.objects.create(user=user, post=blog)
+        return Response(
+            {"message": "Blog added to favorites"}, status=status.HTTP_200_OK
+        )
+    except Post.DoesNotExist:
+        return Response({"message": "Blog not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["DELETE"])
+def remove_from_favorites(request):
+    user = request.user
+    post_id = request.data.get("post_id")
+    post = Post.objects.get(id=post_id)
+
+    favorite = FavoritePost.objects.filter(user=user, post=post)
+    if favorite.exists():
+        favorite.delete()
+        return Response(
+            {"message": "Post removed from favorites."},
+            status=status.HTTP_204_NO_CONTENT,
+        )
+    return Response(
+        {"message": "Post not found in favorites."}, status=status.HTTP_400_BAD_REQUEST
+    )
+
+
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
+
+
+def password_reset_view(request):
+    # Xử lý logic để gửi email đặt lại mật khẩu
+    email = request.POST.get("email")
+    # Gửi email
+    send_mail(
+        "Password reset request",
+        "Please click the link to reset your password.",
+        settings.EMAIL_HOST_USER,  # Gửi từ email này
+        [email],  # Gửi đến địa chỉ email của người dùng
+        fail_silently=False,  # Đặt False để hiển thị lỗi nếu có vấn đề
+    )
+    return HttpResponse("Email sent successfully")

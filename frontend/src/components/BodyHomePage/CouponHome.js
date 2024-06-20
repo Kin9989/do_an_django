@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 
 import { Navigation, Pagination } from 'swiper/modules';
 import { Container, Box, Typography } from '@mui/material';
-
+import voucher from './adProduct/img_service_web/voucher.png';
 
 import React, { useEffect, useState, useCallback } from "react";
 import axios from 'axios';
@@ -49,14 +49,14 @@ const SwiperSlider = () => {
 
     return (
         <Container>
-           
+
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
                 modules={[Navigation, Pagination]}
-                style={{ width: '100%', height: '300px' }}
+                style={{ width: '100%', height: '600px' }}
             >
 
                 {coupons.map(coupons => (
@@ -66,9 +66,15 @@ const SwiperSlider = () => {
                             justifyContent="center"
                             alignItems="center"
                             height="100%"
-                            bgcolor="lightcoral"
+                            style={{ backgroundImage: `url(${voucher})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                         >
-                            <Typography variant="h5">{coupons.code}</Typography>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Typography variant="h4"> {coupons.code}</Typography>
+
+                            </div>
+
+
+
                         </Box>
                     </SwiperSlide>
                 ))}

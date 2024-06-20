@@ -13,24 +13,24 @@ const OurService = () => {
                             <div className="gallery-wrap wrap-effect-3">
                                 <div className="item" style={{ display: 'flex', }}>
                                     <span className="item_span_text"
-                                        style={{ display: 'flex', margin: '0 auto', alignItems: "flex-end", }}>
+                                        style={{ display: 'flex', margin: '0 auto', alignItems: "center ", height: '50px', marginTop: '200px', padding: '10px', background: 'white' }}>
                                         Thiết Kế</span></div>
 
                                 <div className="item" style={{ display: 'flex', }}>
                                     <span className="item_span_text"
-                                        style={{ display: 'flex', margin: '0 auto', alignItems: "flex-end", }}>
+                                        style={{ display: 'flex', margin: '0 auto', alignItems: "center ", height: '50px', marginTop: '200px', padding: '10px', background: 'white' }}>
                                         Thi Công </span>
                                 </div>
 
                                 <div className="item" style={{ display: 'flex', }}>
                                     <span className="item_span_text"
-                                        style={{ display: 'flex', margin: '0 auto', alignItems: "flex-end", }}
+                                        style={{ display: 'flex', margin: '0 auto', alignItems: "center ", height: '50px', marginTop: '200px', padding: '10px', background: 'white' }}
                                     >Bán Lẻ</span>
                                 </div>
 
                                 <div className="item" style={{ display: 'flex', }}>
                                     <span className="item_span_text"
-                                        style={{ display: 'flex', margin: '0 auto', alignItems: "flex-end", }}>
+                                        style={{ display: 'flex', margin: '0 auto', alignItems: "center ", height: '50px', marginTop: '200px', padding: '10px', background: 'white' }}>
                                         Sản Xuất</span>
                                 </div>
                                 {/* <div className="item"></div> */}

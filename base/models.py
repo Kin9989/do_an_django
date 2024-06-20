@@ -6,7 +6,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Post(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     # categoryPost = models.ForeignKey(CategoryPost, on_delete=models.SET_NULL, null=True)
 
     title = models.CharField(max_length=200)
@@ -23,6 +23,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class FavoritePost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorites")
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="favorited_by"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "post")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.post.title}"
 
 
 class CategoryPost(models.Model):

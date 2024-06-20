@@ -33,7 +33,7 @@ function Footer() {
                 <Grid xs={3} style={{ height: '200px' }}>
 
                     <Item style={{ letterSpacing: '3px', color: 'black' }}>
-                        <i class="fa-solid fa-credit-card fa-beat fa-2xl"
+                        <i class="fa-solid fa-credit-card  fa-2xl"
                             style={{ color: 'black', fontSize: '50px', height: '40px', margin: '50px' }}></i><br></br>
                         THANH TOÁN DỄ DÀNG VÀ<br></br> BẢO MẬT
                     </Item>
@@ -41,7 +41,7 @@ function Footer() {
 
                 <Grid xs={3} style={{ height: '200px' }}>
                     <Item style={{ letterSpacing: '3px', color: 'black' }}>
-                        <i class="fa-solid fa-truck-fast fa-beat fa-2xl"
+                        <i class="fa-solid fa-truck-fast  fa-2xl"
                             style={{ color: 'black', fontSize: '50px', height: '40px', margin: '50px' }}></i><br></br>
                         GIAO HÀNG ĐẢM BẢO <br></br>TOÀN QUỐC
                     </Item>
@@ -49,7 +49,7 @@ function Footer() {
 
                 <Grid xs={3} style={{ height: '200px' }}>
                     <Item style={{ letterSpacing: '3px', color: 'black' }}>
-                        <i class="fa-solid fa-phone fa-beat fa-2xl"
+                        <i class="fa-solid fa-phone  fa-2xl"
                             style={{ color: 'black', fontSize: '50px', height: '40px', margin: '50px' }}></i><br></br>
                         HOTLINE 0914938844 <br></br> (10:00 - 19:00)
                     </Item>
@@ -57,7 +57,7 @@ function Footer() {
 
                 <Grid xs={3} style={{ height: '200px' }}>
                     <Item style={{ letterSpacing: '3px', color: 'black' }}>
-                        <i class="fa-solid fa-check-double fa-beat fa-2xl"
+                        <i class="fa-solid fa-check-double  fa-2xl"
                             style={{ color: 'black', fontSize: '50px', height: '40px', margin: '50px' }}></i><br></br>
                         CAM KẾT SẢN PHẨM <br></br>CHÍNH HÃNG
                     </Item>

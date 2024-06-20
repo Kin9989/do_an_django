@@ -224,15 +224,17 @@ figure {
     
 .wrap-effect-3 .item{
     font-size: 20px;
+    color: rgb(12, 0, 0);
 }
+
 .wrap-effect-3 .item:hover {
     animation: rotate 0.7s ease-in-out both;
-    border-radius: 10px;
-    border: 1px solid gray;
+    /* border-radius: 10px;
+    border: 1px solid gray; */
 }
 
 .wrap-effect-3 .item:hover  {
-    color: gray;
+    color: rgb(12, 0, 0);
     font-size: 40px;
     font-weight: 700;
     

@@ -69,8 +69,10 @@ function App() {
 
 
       <Route path="/reset_password" component={ResetPasswordScreen} />
-      <Route path="/comfirm_password" component={ResetPasswordConfirmSreen} />
-
+      {/* <Route path="/comfirm_password" component={ResetPasswordConfirmSreen} /> */}
+      <Route path="/reset-password-confirm/:uidb64/:token" component={ResetPasswordConfirmSreen}>
+       
+      </Route>
       <Route path="/register" component={RegisterScreen} />
 
       <Route path="/profile" component={ProfileScreen} />

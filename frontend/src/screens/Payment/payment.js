@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PaymentForm = ({ match }) => {
-    const orderId = match.params.id;
+const PaymentForm = ({ orderId, totalPrice }) => {
     const [formData, setFormData] = useState({
         order_type: 'topup',
-        order_id: new Date().toISOString().replace(/[-:]/g, ''),
-        amount: 12220,
-        order_desc: `Thanh toan don hang thoi gian: ${new Date().toLocaleString()}`,
+        order_id: orderId,  // Use orderId from props
+        amount: totalPrice,  // Use totalPrice from props
+        order_desc: '',
         bank_code: '',
         language: 'vn'
     });
@@ -15,6 +14,20 @@ const PaymentForm = ({ match }) => {
     const [csrfToken, setCsrfToken] = useState('');
 
     useEffect(() => {
+        const fetchOrderDetails = async () => {
+            try {
+                const response = await axios.get(`/api/orders/${orderId}/`);
+                const order = response.data;
+                setFormData({
+                    ...formData,
+                    amount: order.totalPrice,
+                    order_desc: `Thanh toan don hang thoi gian: ${new Date().toLocaleString()}`,
+                });
+            } catch (error) {
+                console.error('Error fetching order details:', error);
+            }
+        };
+
         const fetchCsrfToken = async () => {
             try {
                 const response = await axios.get('/api/orders/get-csrf-token/');
@@ -23,8 +36,10 @@ const PaymentForm = ({ match }) => {
                 console.error('Error fetching CSRF token:', error);
             }
         };
+
+        fetchOrderDetails();
         fetchCsrfToken();
-    }, []);
+    }, [orderId]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,20 +52,17 @@ const PaymentForm = ({ match }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Chuyển giá trị của trường "Số tiền" thành kiểu số nguyên
-        const amount = parseInt(formData.amount);
-
         try {
-            console.log('Form Data:', formData);  // Log dữ liệu form
+            console.log('Form Data:', formData);  // Log form data
             console.log('CSRF Token:', csrfToken);  // Log CSRF token
 
-            const response = await axios.post('api/orders/payment/', { ...formData, amount }, {
+            const response = await axios.post('/api/orders/payment/', formData, {
                 headers: {
                     'X-CSRFToken': csrfToken,
                 },
             });
 
-            console.log('Response Data:', response.data);  // Log dữ liệu phản hồi
+            console.log('Response Data:', response.data);  // Log response data
 
             if (response.data.redirect_url) {
                 window.location.href = response.data.redirect_url;
@@ -61,6 +73,7 @@ const PaymentForm = ({ match }) => {
             console.error('Error submitting form:', error);
         }
     };
+
     return (
         csrfToken ? (
             <div className="table-responsive">

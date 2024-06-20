@@ -19,6 +19,8 @@ from base.serializers import ProductSerializer, CategorySerializer, ReviewSerial
 
 from django.http import Http404
 
+# from base.test import IsSuperUser, IsStaffUser
+
 
 @api_view(["GET"])
 def getProducts(request):
@@ -181,46 +183,52 @@ def deleteProduct(request, pk):
     return Response("Product deleted successfully")
 
 
+from django.shortcuts import get_object_or_404
+
+
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def createProductReview(request, pk):
     user = request.user
-    product = Product.objects.get(_id=pk)
+    product = get_object_or_404(Product, _id=pk)
     data = request.data
 
-    # 1 Review already exists
-    alreadyExists = product.review_set.filter(user=user).exists()
+    # Check if the user has purchased the product
+    has_purchased = OrderItem.objects.filter(order__user=user, product=product).exists()
 
-    if alreadyExists:
-        content = {"detail": "Product already reviewed"}
+    if not has_purchased:
+        content = {"detail": "Bạn cần mua sản phẩm để đánh giá nó."}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-    # 2 No Rating or 0
-    elif data["rating"] == 0:
-        content = {"detail": "Please Select a rating"}
+    # Check if the user has already reviewed the product
+    already_exists = product.review_set.filter(user=user).exists()
+
+    if already_exists:
+        content = {"detail": "Bạn đã đánh giá sản phẩm."}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-    # 3 Create review
-    else:
-        review = Review.objects.create(
-            user=user,
-            product=product,
-            name=user.first_name,
-            rating=data["rating"],
-            comment=data["comment"],
-        )
+    # Check for rating value
+    if data.get("rating", 0) == 0:
+        content = {"detail": "Vui lòng chọn điểm đánh giá."}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-        reviews = product.review_set.all()
-        product.numReviews = len(reviews)
+    # Create the review
+    review = Review.objects.create(
+        user=user,
+        product=product,
+        name=user.first_name,
+        rating=data["rating"],
+        comment=data["comment"],
+    )
 
-        total = 0
+    # Update product rating
+    reviews = product.review_set.all()
+    product.numReviews = len(reviews)
+    total = sum(review.rating for review in reviews)
+    product.rating = total / len(reviews)
+    product.save()
 
-        for i in reviews:
-            total += i.rating
-        product.rating = total / len(reviews)
-        product.save()
-
-        return Response("Review Added")
+    return Response("Thêm đánh giá thành công")
 
 
 @api_view(["GET"])

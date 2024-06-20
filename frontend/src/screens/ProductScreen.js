@@ -18,7 +18,7 @@ import {
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-
+import Contact from "./ContactScreen"
 /* REACT - REDUX */
 import { useDispatch, useSelector } from "react-redux";
 
@@ -166,6 +166,15 @@ function ProductScreen({ match, history }) {
                     </ListGroup.Item>
                   )}
 
+
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Liên hệ</Col>
+                      <Col>
+                        <Link to="/contact">Liện hệ nếu cần sự giúp đỡ từ chúng tôi</Link>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
                   <ListGroup.Item>
                     <Button
                       className="w-100"
@@ -179,6 +188,8 @@ function ProductScreen({ match, history }) {
                 </ListGroup>
               </Card>
             </Col>
+
+
           </Row>
 
           <Row>

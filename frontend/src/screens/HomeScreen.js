@@ -16,6 +16,7 @@ import OurService from "../components/BodyHomePage/OurService";
 import CouponHome from "../components/BodyHomePage/CouponHome";
 import BlogHome from "../components/BlogHome"
 import HomePage1 from "../components/HomePage1"
+import ImgBD from "../components/BodyHomePage/ImgBH"
 
 import { Typography } from '@mui/material';
 
@@ -75,13 +76,15 @@ function HomeScreen({ history }) {
           </div>
         )}
       </Container>
-      <Typography variant="h4" gutterBottom>
-        Mã Khuyễn mãi
-      </Typography>
-      <CouponHome></CouponHome>
-      <Container>
 
-        <h1>Bài Viết mới nhất</h1>
+
+
+      <Container>
+        <Typography variant="h4" className="mt-5">
+          Mã Khuyến mãi
+        </Typography>
+        <CouponHome></CouponHome>
+        <h1 className="mt-5" >Bài Viết mới nhất</h1>
         <BlogHome></BlogHome>
 
 
@@ -92,6 +95,7 @@ function HomeScreen({ history }) {
         <OurService></OurService>
       </Container>
       <Committed></Committed>
+   
 
     </div >
   );

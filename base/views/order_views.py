@@ -600,9 +600,9 @@ def payment(request):
         # Directly assigning fixed values instead of validating form input
         order_type = request.POST.get("order_type")
         # order_id = request.POST.get("order_id")
-        order_id = 123
+        order_id = 44
 
-        amount = 10010000
+        amount = 259680
         order_desc = request.POST.get("order_desc")
         bank_code = request.POST.get("bank_code")
         language = request.POST.get("language")

@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
+import IMGBD from "../components/BodyHomePage/ImgBH";
 
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -106,79 +106,92 @@ const BlogDetailScreen = ({ id }) => {
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={6} md={9}>
+                    <Grid item xs={6} md={8}>
                         <Item>
 
                             {loading && <div>Loading...</div>}
                             {error && <div>Error: {error.message}</div>}
                             {blog && (
-                                <div>
+                                <div className='m-2'>
                                     <div style={{ width: '50%', height: '400px', margin: "0 auto" }} >
                                         <img src={blog.image} alt={blog.title} style={{ width: '100%', height: '400px', objectFit: 'cover', objectPosition: 'center' }} />
                                     </div>
                                     <h1>{blog.title}</h1>
-                                    Ngày tạo: {blog.created_at}
-                                    <div> {blog.description}</div>
+                                    <div style={{ display: 'flex', justifyContent: 'start' }}>   Ngày tạo: {formatDate(blog.created_at)}</div>
+                                    <div style={{ display: 'flex', justifyContent: 'flex-start' }} > {blog.description}</div>
                                     <div dangerouslySetInnerHTML={{ __html: blog.content }} style={{ overflow: 'auto' }} />
                                     {/* Add more details here if needed */}
                                 </div>
                             )}
                         </Item>
                     </Grid>
-                    <Grid item xs={6} md={3}>
-                        <div>
-                            <h5>  Danh sách bài viết mới
-                            </h5>
+                    <Grid item xs={6} md={4}>
 
-                            <Demo>
-                                <List dense={dense}>
+                        <Grid container spacing={2}>
 
-                                    {/* <ListItem>
-                                        <ListItemText
-                                            primary="Single-line item"
-                                            secondary={secondary ? 'Secondary text' : null}
-                                        />
-                                    </ListItem> */}
+                            {/* <Grid item xs={12} md={12}>
+                                <div>
+                                    <h5>  Danh sách bài viết mới
+                                    </h5>
+
+                                    <Demo>
+                                        <List dense={dense}>
 
 
-                                    {blogs.map((blog) => (
-                                        <ListItem key={blog.id}>
-                                            {/* <ListItemText
-                                                primary={blog.title}
-                                                secondary={formatDate(blog.created_at)}
-                                            /> */}
 
-                                            <Card sx={{ display: 'flex' }}>
-                                                <Box sx={{ display: 'flex', flexDirection: 'column', width: '200px' }}>
-                                                    <CardContent sx={{ flex: '1 0 auto' }}>
+
+                                            {blogs.map((blog) => (
+                                                <ListItem key={blog.id}>
+
+
+                                                    <Card sx={{ display: 'flex' }}>
+                                                        <Box sx={{ display: 'flex', flexDirection: 'column', width: '200px' }}>
+                                                            <CardContent sx={{ flex: '1 0 auto' }}>
+                                                                <Link to={`/bl/${blog.id}`}>
+                                                                    <Typography component="div" variant="h5">
+                                                                        {blog.title}
+                                                                    </Typography>
+                                                                </Link>
+                                                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                                                    ADMIN
+                                                                </Typography>
+                                                            </CardContent>
+
+                                                        </Box>
                                                         <Link to={`/bl/${blog.id}`}>
-                                                            <Typography component="div" variant="h5">
-                                                                {blog.title}
-                                                            </Typography>
+                                                            <CardMedia
+                                                                component="img"
+                                                                sx={{ width: 151, height: 151 }}
+                                                                image={blog.image}
+                                                                alt="Live from space album cover"
+                                                            />
                                                         </Link>
-                                                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                                                            ADMIN
-                                                        </Typography>
-                                                    </CardContent>
+                                                    </Card>
 
-                                                </Box>
-                                                <Link to={`/bl/${blog.id}`}>
-                                                    <CardMedia
-                                                        component="img"
-                                                        sx={{ width: 151, height: 151 }}
-                                                        image={blog.image}
-                                                        alt="Live from space album cover"
-                                                    />
-                                                </Link>
-                                            </Card>
+                                                </ListItem>
+                                            ))}
 
-                                        </ListItem>
-                                    ))}
+                                        </List>
+                                    </Demo>
 
-                                </List>
-                            </Demo>
+                                </div>
+                            </Grid> */}
+                            <Grid item xs={12} md={12}>
+                                <div>
+                                    <h5>  Danh sách bài viết mới
+                                    </h5>
 
-                        </div>
+
+                                    <Demo>
+                                        <List dense={dense}>
+                                            <IMGBD></IMGBD>
+                                        </List>
+                                    </Demo>
+
+
+                                </div>
+                            </Grid>
+                        </Grid>
                     </Grid>
 
                 </Grid>

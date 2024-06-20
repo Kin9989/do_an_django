@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "_id", "username", "email", "name", "isAdmin", "last_name"]
+        fields = "__all__"
 
     def get__id(self, obj):
         return obj.id
@@ -41,6 +41,7 @@ class UserSerializerWithToken(UserSerializer):
             "isAdmin",
             "token",
             "last_name",
+            "first_name",
         ]
 
     def get_token(self, obj):
@@ -127,4 +128,10 @@ class CouponSerializer(serializers.ModelSerializer):
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment_VNPay
+        fields = "__all__"
+
+
+class FavoritePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FavoritePost
         fields = "__all__"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -9,16 +9,21 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import { Link } from "react-router-dom";
+import BannerBlog from "../components/BodyHomePage/ImgBaner/BANNERBLOG.jpg";
+import Button from '@mui/material/Button';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link } from "react-router-dom";
+import axios from 'axios';
 
-// Swiper imports
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+const ColorButton = styled(Button)(({ theme }) => ({
+    backgroundColor: 'white',
+    color: 'black',
+    '&:hover': {
+        backgroundColor: 'white',
+    },
+}));
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -31,11 +36,12 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-const SwiperSlider = () => {
+const BlogScreen = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [expandedBlogId, setExpandedBlogId] = useState(null);
+    const history = useHistory();
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -58,6 +64,14 @@ const SwiperSlider = () => {
         setExpandedBlogId(expandedBlogId === blogId ? null : blogId);
     };
 
+    const truncateTitle = (title) => {
+        const maxLength = 30;
+        if (title.length > maxLength) {
+            return title.slice(0, maxLength) + '...';
+        }
+        return title;
+    };
+
     const formatDate = (isoDateString) => {
         const date = new Date(isoDateString);
         const day = String(date.getDate()).padStart(2, '0');
@@ -66,30 +80,61 @@ const SwiperSlider = () => {
         return `${day}/${month}/${year}`;
     };
 
-    const reversedBlogs = blogs.slice().reverse(); // Reverse the blogs array
+    const handleFavoriteClick = async (blogId, isFavorited) => {
+        try {
+            const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+
+            if (!token) {
+                history.push('/login'); // Redirect to login if token is not available
+                return;
+            }
+
+            const response = await axios.post(`/api/users/add_to_favorites/${blogId}/`, null, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+                },
+            });
+
+            if (response.status === 403) {
+                history.push('/login'); // Redirect to login page if not authenticated
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error('Failed to update favorite status');
+            }
+
+            const updatedBlogs = blogs.map(blog =>
+                blog.id === blogId ? { ...blog, is_favorited: !isFavorited } : blog
+            );
+            setBlogs(updatedBlogs);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
     return (
-        <div className='m-5'>
+        <>
             {loading && <div>Loading...</div>}
             {error && <div>Error: {error.message}</div>}
-
-            <Swiper
-                spaceBetween={20}
-                slidesPerView={4}
-                navigation
-                pagination={{ clickable: true }}
-                modules={[Navigation, Pagination]}
-                breakpoints={{
-                    640: { slidesPerView: 1, spaceBetween: 20 },
-                    768: { slidesPerView: 2, spaceBetween: 20 },
-                    1024: { slidesPerView: 4, spaceBetween: 20 },
-                }}
-            >
-                {reversedBlogs.map(blog => (
-                    <SwiperSlide key={blog.id}>
-                        <Card sx={{ maxWidth: 345 }} className="mb-5">
+            <div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <img src={BannerBlog} style={{ width: "1000px", height: 'auto' }} alt="Banner" />
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                        <h1 style={{ color: "white" }}>Không gian sống lý tưởng <br /> dành cho bạn</h1>
+                        <Link to="/blogs">
+                            <ColorButton variant="contained">Khám phá ngay</ColorButton>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <Grid container spacing={2} className='container mt-5' style={{ margin: '0 auto' }}>
+                {blogs.map(blog => (
+                    <Grid item key={blog.id} xs={12} sm={6} md={3}>
+                        <Card sx={{ maxWidth: 345 }}>
                             <CardHeader
-                                title={blog.title}
+                                title={truncateTitle(blog.title)}
                                 subheader={formatDate(blog.created_at)}
                             />
                             <Link to={`/bl/${blog.id}`}>
@@ -102,12 +147,15 @@ const SwiperSlider = () => {
                             </Link>
                             <CardContent>
                                 <Typography variant="body2" color="text.secondary">
-                                    {blog.description}
+                                
                                 </Typography>
                             </CardContent>
                             <CardActions disableSpacing>
-                                <IconButton aria-label="add to favorites">
-                                    <FavoriteIcon />
+                                <IconButton
+                                    aria-label="add to favorites"
+                                    onClick={() => handleFavoriteClick(blog.id, blog.is_favorited)}
+                                >
+                                    {/* <FavoriteIcon color={blog.is_favorited ? "error" : "default"} /> */}
                                 </IconButton>
                                 <ExpandMore
                                     expand={expandedBlogId === blog.id}
@@ -120,18 +168,18 @@ const SwiperSlider = () => {
                             </CardActions>
                             <Collapse in={expandedBlogId === blog.id} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Chi tiết</Typography>
+                                    <Typography paragraph>Mô tả</Typography>
                                     <Typography paragraph>
-                                        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+                                    {blog.description}
                                     </Typography>
                                 </CardContent>
                             </Collapse>
                         </Card>
-                    </SwiperSlide>
+                    </Grid>
                 ))}
-            </Swiper>
-        </div>
+            </Grid>
+        </>
     );
 };
 
-export default SwiperSlider;
+export default BlogScreen;
