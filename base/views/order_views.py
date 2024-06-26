@@ -490,7 +490,7 @@ def get_coupon_by_id(request, pk):
 
 
 @api_view(["POST"])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def add_coupon(request):
     serializer = CouponSerializer(data=request.data)
     if serializer.is_valid():
@@ -600,7 +600,7 @@ def payment(request):
         # Directly assigning fixed values instead of validating form input
         order_type = request.POST.get("order_type")
         # order_id = request.POST.get("order_id")
-        order_id = 44
+        order_id = 48
 
         amount = 259680
         order_desc = request.POST.get("order_desc")

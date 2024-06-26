@@ -149,8 +149,8 @@ function ProfileScreen({ history }) {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Hồ sơ" {...a11yProps(0)} />
+            <Tab label="Đơn hàng" {...a11yProps(1)} />
 
           </Tabs>
         </Box>
@@ -172,7 +172,7 @@ function ProfileScreen({ history }) {
               />
             </Form.Group>
 
-            <Form.Group controlId="username">
+            {/* <Form.Group controlId="username">
               <Form.Label> Tên đăng nhập</Form.Label>
               <Form.Control
                 required
@@ -181,7 +181,7 @@ function ProfileScreen({ history }) {
                 value={email}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             {/* Thêm trường email vào form */}
             <Form.Group controlId="email">
@@ -190,6 +190,7 @@ function ProfileScreen({ history }) {
                 required
                 type="email"
                 placeholder="Enter Email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>

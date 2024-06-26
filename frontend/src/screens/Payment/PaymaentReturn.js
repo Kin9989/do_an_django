@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import Message from '../../components/Message';
 const PaymentReturn = () => {
     const [data, setData] = useState({
         title: '',
@@ -38,7 +38,7 @@ const PaymentReturn = () => {
 
     return (
         <div className="panel panel-default">
-            <div className="panel-heading">{data.title}: {data.result}</div>
+            {/* <div className="panel-heading">{data.title}: {data.result}</div>
             <div className="panel-body">
                 <p>order_id: {data.order_id}</p>
                 <p>amount: {data.amount}</p>
@@ -50,7 +50,8 @@ const PaymentReturn = () => {
                     <p>vnp_ResponseCode: {data.vnp_ResponseCode} - Lỗi</p>
                 )}
                 {data.msg && <p className="alert-warning">{data.msg}</p>}
-            </div>
+            </div> */}
+            <Message>Thanh Toán thành công</Message>
         </div>
     );
 };

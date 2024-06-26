@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BarChart } from '@mui/x-charts/BarChart';
+import { BarChart, pieArcLabelClasses } from '@mui/x-charts/BarChart';
 import TextField from '@mui/material/TextField';
 import ProductsSTATS from './ProductsSTATS';
 const StatsDMY = () => {

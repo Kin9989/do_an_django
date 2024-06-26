@@ -112,11 +112,7 @@ function Footer() {
                       Điều khoản dịch vụ
                     </a>
                   </li>
-                  <li>
-                    <a href='#!' className='text-white' style={{ textDecoration: 'none' }}>
-                      Link 4
-                    </a>
-                  </li>
+                  
                 </ul>
               </MDBCol>
 

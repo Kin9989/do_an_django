@@ -96,7 +96,7 @@ function ShippingScreen({ history }) {
         </Form.Group>
 
         <Button className="my-3" type="submit" variant="primary">
-          Continue
+          Tiếp tục
         </Button>
       </Form>
     </FormContainer>

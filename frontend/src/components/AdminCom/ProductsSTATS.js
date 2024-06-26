@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -68,14 +68,29 @@ export default function AlertDialog() {
                             <PieChart
                                 series={[
                                     {
+                                        arcLabel: (item) => `${item.label} (${item.value})`,
+                                        arcLabelMinAngle: 20,
                                         data: productStats.map((product) => ({
                                             value: product.total_orders,
                                             label: product.name,
+
                                         })),
+                                        highlightScope: { faded: 'global', highlighted: 'item' },
+                                        faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
                                     },
                                 ]}
-                                width={590}
-                                height={300}
+
+                                sx={{
+                                    [`& .${pieArcLabelClasses.root}`]: {
+                                        fill: 'white',
+                                        fontSize: '15px',
+                                        fontWeight: 'bold',
+
+
+                                    },
+                                }}
+                                width={1000}
+                                height={500}
                             />
                         )}
                     </div>

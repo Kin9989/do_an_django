@@ -119,9 +119,16 @@ function LoginScreen({ location, history }) {
             </Form>
             <Row className="py-3">
               <Col>
-                {/* ?{" "} */}
+
                 <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
                   Đăng kí tài khoản
+                </Link>
+              </Col>
+
+              <Col>
+
+                <Link to={redirect ? `/reset_password` : "/register"}>
+                  Quên mật khẩu
                 </Link>
               </Col>
             </Row>

@@ -122,8 +122,8 @@ const BlogScreen = () => {
             <div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <img src={BannerBlog} style={{ width: "1000px", height: 'auto' }} alt="Banner" />
-                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                        <h1 style={{ color: "white" }}>Không gian sống lý tưởng <br /> dành cho bạn</h1>
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} className='' >
+                        <h1 style={{ color: "white" , }}>Không gian sống lý tưởng <br /> dành cho bạn</h1>
                         <Link to="/blogs">
                             <ColorButton variant="contained">Khám phá ngay</ColorButton>
                         </Link>

@@ -95,7 +95,7 @@ function HomeScreen({ history }) {
         <OurService></OurService>
       </Container>
       <Committed></Committed>
-   
+
 
     </div >
   );

@@ -55,6 +55,7 @@ const CouponListScreen = () => {
                 setCoupons(prevCoupons => prevCoupons.filter(coupon => coupon.id !== id));
             } else {
                 history.push('/admin/coupon/list/');
+                window.alert('Bạn muốn xóa mã khuyến mãi này ?')
                 window.location.reload();
             }
         } catch (error) {

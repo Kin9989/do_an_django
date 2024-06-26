@@ -133,7 +133,7 @@ const ContactScreen = () => {
                         </FormControl>
                         <FormControl defaultValue="" required className='mt-2'>
                             <Label>Số điện thoại</Label>
-                            <StyledInput placeholder="Nhập số điện thoại của bạn" name="phone" />
+                            <StyledInput placeholder="Nhập số điện thoại của bạn" name="Phone" />
                             <HelperText />
                         </FormControl>
 

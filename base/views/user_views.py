@@ -108,7 +108,7 @@ def reset_password_request_token(request):
         fail_silently=False,
     )
 
-    return Response({"detail": "Password reset link sent"}, status=status.HTTP_200_OK)
+    return Response({"detail": "Vui lòng kiểm tra email"}, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
